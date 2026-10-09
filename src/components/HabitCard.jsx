@@ -3,7 +3,7 @@ export default function HabitCard({
   title,
   goal = "Sem meta definida",
   completed,
-  onShowDetails,
+  onToggle,
 }) {
   return (
     <article className={`habit-card ${completed ? "is-complete" : "is-pendent"}`}>
@@ -18,8 +18,8 @@ export default function HabitCard({
             : <span aria-label="Pendente">◌ </span>}
           {completed ? "Concluído" : "Pendente"}
         </span>
-        <button type="button" onClick={() => onShowDetails(id)}>
-          Ver detalhes
+        <button type="button" onClick={() => onToggle(id)}>
+          {completed ? "Desmarcar" : "Concluir"}
         </button>
       </div>
     </article>

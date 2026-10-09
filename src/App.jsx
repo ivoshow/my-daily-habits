@@ -1,24 +1,29 @@
+import { useState } from "react";
 import "./App.css";
 import HabitList from "./components/HabitList";
 import Panel from "./components/Panel";
 import { initialHabits } from "./data/habits";
 
 export default function App() {
-  const completedCount = initialHabits.filter(
+  const [habits, setHabits] = useState(initialHabits);
+
+  const completedCount = habits.filter(
     (habit) => habit.completed,
   ).length;
 
-  function handleShowDetails(habitId) {
-    const habit = initialHabits.find((item) => item.id === habitId);
+  function handleToggleHabit(habitId) {
+    setHabits((currentHabits) =>
+      currentHabits.map((habit) => {
+        if (habit.id === habitId) {
+          return {
+            ...habit,
+            completed: !habit.completed,
+          };
+        }
 
-    console.log("Hábito solicitado:", habitId, habit);
-
-    if (habit) {
-      const goal = habit.goal === undefined
-        ? "Sem meta definida"
-        : habit.goal;
-      window.alert(`${habit.title} — Meta: ${goal}`);
-    }
+        return habit;
+      }),
+    );
   }
 
   return (
@@ -27,14 +32,14 @@ export default function App() {
         <p className="eyebrow">MY DAILY HABITS</p>
         <h1>Pequenos hábitos, progresso visível.</h1>
         <p>
-          {completedCount} de {initialHabits.length} hábitos concluídos.
+          {completedCount} de {habits.length} hábitos concluídos.
         </p>
       </header>
 
       <Panel title="Hábitos de hoje">
         <HabitList
-          habits={initialHabits}
-          onShowDetails={handleShowDetails}
+          habits={habits}
+          onToggle={handleToggleHabit}
         />
       </Panel>
 
