@@ -22,5 +22,10 @@ export const initialHabits = [
     title: "Ler documentação",
     goal: "10 minutos",
     completed: true,
-   },
+  },
+  {
+    id: "meditate",
+    title: "Meditar",
+    completed: false,
+  },
 ];

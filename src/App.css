@@ -60,4 +60,48 @@ body {
   font-weight: 700;
 }
 
+.habit-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
+.habit-actions button {
+  padding: 8px 12px;
+  border: 1px solid #9aa9ba;
+  border-radius: 8px;
+  background: #ffffff;
+  color: inherit;
+  cursor: pointer;
+}
+
+.panel {
+  overflow: hidden;
+  border: 1px solid #d7dde5;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.panel + .panel {
+  margin-top: 24px;
+}
+
+.panel-header,
+.panel-content {
+  padding: 20px;
+}
+
+.panel-header {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.panel-header h2 {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .habit-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
